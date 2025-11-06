@@ -1,0 +1,12 @@
+{
+  "name": "cdelta-diagrams",
+  "private": true,
+  "scripts": {
+    "build:svgs": "mmdc -i charts -o docs/svgs -e svg -c mermaid.config.json",
+    "build:pngs": "mmdc -i charts -o docs/pngs -e png -c mermaid.config.json",
+    "build": "npm run build:svgs && npm run build:pngs"
+  },
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^10.9.0"
+  }
+}
