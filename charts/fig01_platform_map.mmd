@@ -1,17 +1,16 @@
-%% Notion-safe: enable HTML labels & nicer spacing
-%% (These options also live in mermaid.config.json; keeping them here ensures the CLI & preview match.)
-%%{init: {"theme": "dark", "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 60, "rankSpacing": 80}} }%%
-flowchart TD
-  %% Visual style for steps
-  classDef step fill:#0f172a,stroke:#475569,stroke-width:1px,color:#e5e7eb;
+%%{init: {"theme": "dark", "flowchart": {"htmlLabels": true, "curve": "basis"}} }%%
+flowchart LR
+  classDef step fill:#0f172a,stroke:#475569,stroke-width:1px,color:#e5e7eb,rx:6,ry:6,fontSize:16px;
+  classDef title fill:none,stroke:none,color:#94a3b8,fontSize:12px;
 
-  A["<b>Coordinate</b><br/>Command&nbsp;Plane"]:::step --> 
-  B["<b>Sense</b><br/>Perception"]:::step --> 
-  C["<b>Hold</b><br/>Working&nbsp;Memory"]:::step --> 
-  D["<b>Weigh</b><br/>Social&nbsp;Reasoning"]:::step --> 
-  E["<b>Learn</b><br/>Learning"]:::step --> 
-  F["<b>Measure</b><br/>Self-Monitor&nbsp;&amp;&nbsp;Ledger"]:::step --> 
-  G["<b>Express</b><br/>Expression&nbsp;Interface"]:::step
+  %% Top row: Feed-forward cognition
+  A["<b>Coordinate</b><br/>Command Plane"]:::step --> B["<b>Sense</b><br/>Perception"]:::step
+  B --> C["<b>Hold</b><br/>Working Memory"]:::step --> D["<b>Weigh</b><br/>Social Reasoning"]:::step
 
-  %% Optional: lighten connector styling
+  %% Bottom row: Feedback cognition
+  D --> E["<b>Learn</b><br/>Learning"]:::step --> F["<b>Measure</b><br/>Self-Monitor & Ledger"]:::step
+  F --> G["<b>Express</b><br/>Expression Interface"]:::step --> A
+
+  %% Background structure
   linkStyle default stroke:#64748B,stroke-width:2px,opacity:0.7;
+  class A,B,C,D,E,F,G step;
