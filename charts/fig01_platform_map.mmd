@@ -1,7 +1,17 @@
-flowchart LR
-  A[Coordinate – Command Plane] --> B[Sense – Perception]
-  B --> C[Hold – Working Memory]
-  C --> D[Weigh – Social Reasoning]
-  D --> E[Learn – Learning]
-  E --> F[Measure – Self-Monitor & Ledger]
-  F --> G[Express – Expression Interface]
+%% Notion-safe: enable HTML labels & nicer spacing
+%% (These options also live in mermaid.config.json; keeping them here ensures the CLI & preview match.)
+%%{init: {"theme": "dark", "flowchart": {"htmlLabels": true, "curve": "basis", "nodeSpacing": 60, "rankSpacing": 80}} }%%
+flowchart TD
+  %% Visual style for steps
+  classDef step fill:#0f172a,stroke:#475569,stroke-width:1px,color:#e5e7eb;
+
+  A["<b>Coordinate</b><br/>Command&nbsp;Plane"]:::step --> 
+  B["<b>Sense</b><br/>Perception"]:::step --> 
+  C["<b>Hold</b><br/>Working&nbsp;Memory"]:::step --> 
+  D["<b>Weigh</b><br/>Social&nbsp;Reasoning"]:::step --> 
+  E["<b>Learn</b><br/>Learning"]:::step --> 
+  F["<b>Measure</b><br/>Self-Monitor&nbsp;&amp;&nbsp;Ledger"]:::step --> 
+  G["<b>Express</b><br/>Expression&nbsp;Interface"]:::step
+
+  %% Optional: lighten connector styling
+  linkStyle default stroke:#64748B,stroke-width:2px,opacity:0.7;
