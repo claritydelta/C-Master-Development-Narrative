@@ -1,12 +1,21 @@
 {
   "theme": "dark",
   "themeVariables": {
-    "fontFamily": "Source Sans Pro, Helvetica, Arial, sans-serif",
-    "primaryColor": "#141414",
-    "primaryTextColor": "#ffffff",
-    "primaryBorderColor": "#2E3A32",
-    "lineColor": "#2E3A32"
+    "primaryColor": "#0f172a",
+    "primaryBorderColor": "#334155",
+    "primaryTextColor": "#e5e7eb",
+    "secondaryColor": "#111827",
+    "tertiaryColor": "#1f2937",
+    "lineColor": "#64748B",
+    "fontFamily": "Inter,Segoe UI,Helvetica,Arial,sans-serif",
+    "fontSize": "16px",
+    "edgeLabelBackground": "#0b1220"
   },
-  "flowchart": { "htmlLabels": true, "curve": "basis" },
-  "sequence": { "mirrorActors": false }
+  "flowchart": {
+    "curve": "basis",
+    "htmlLabels": true,
+    "nodeSpacing": 60,
+    "rankSpacing": 80,
+    "padding": 12
+  }
 }
