@@ -27,7 +27,7 @@ jobs:
           mkdir -p docs/svgs
           mkdir -p docs/pngs
 
-    - name: Build diagrams (SVG + PNG)
+   - name: Build diagrams (SVG + PNG)
   shell: bash
   run: |
     set -e
