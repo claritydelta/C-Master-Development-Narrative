@@ -1,0 +1,29 @@
+%%{init: {
+  "theme": "dark",
+  "themeVariables": {
+    "primaryColor": "#0f172a",
+    "primaryBorderColor": "#334155",
+    "primaryTextColor": "#e5e7eb",
+    "lineColor": "#64748B",
+    "fontFamily": "Inter,Segoe UI,Helvetica,Arial,sans-serif",
+    "fontSize": "15px"
+  },
+  "flowchart": { "htmlLabels": true, "curve": "basis", "nodeSpacing": 70, "rankSpacing": 90 }
+}}%%
+flowchart LR
+
+  %% Node style
+  classDef node fill:#0f172a,stroke:#475569,stroke-width:1px,color:#e5e7eb,rx:6,ry:6;
+  linkStyle default stroke:#64748B,stroke-width:2px,opacity:0.7;
+
+  %% Top row (Feed-forward)
+  A["<b>Coordinate</b><br/>Command Plane"]:::node --> B["<b>Sense</b><br/>Perception"]:::node
+  B --> C["<b>Hold</b><br/>Working Memory"]:::node --> D["<b>Weigh</b><br/>Social Reasoning"]:::node
+
+  %% Bottom row (Feedback)
+  D --> E["<b>Learn</b><br/>Learning"]:::node --> F["<b>Measure</b><br/>Self-Monitor & Ledger"]:::node
+  F --> G["<b>Express</b><br/>Expression Interface"]:::node --> A
+
+  %% Optional continuity label
+  M[( )]
+  G -.->|Continuity ⟳| A
