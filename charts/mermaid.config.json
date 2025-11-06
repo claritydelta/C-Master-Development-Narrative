@@ -1,0 +1,12 @@
+{
+  "theme": "dark",
+  "themeVariables": {
+    "fontFamily": "Source Sans Pro, Helvetica, Arial, sans-serif",
+    "primaryColor": "#141414",
+    "primaryTextColor": "#ffffff",
+    "primaryBorderColor": "#2E3A32",
+    "lineColor": "#2E3A32"
+  },
+  "flowchart": { "htmlLabels": true, "curve": "basis" },
+  "sequence": { "mirrorActors": false }
+}
