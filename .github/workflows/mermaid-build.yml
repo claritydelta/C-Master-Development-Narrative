@@ -26,16 +26,19 @@ jobs:
           mkdir -p docs/svgs
           mkdir -p docs/pngs
 
-      - name: Build diagrams (SVG + PNG)
-        shell: bash
-        run: |
-          set -e
-          for f in charts/*.mmd; do
-            base="$(basename "${f%.mmd}")"
-            npx @mermaid-js/mermaid-cli -p mermaid.config.json -i "$f" -o "docs/svgs/${base}.svg"
-            npx @mermaid-js/mermaid-cli -p mermaid.config.json -i "$f" -o "docs/pngs/${base}.png"
-          done
-
+      - - name: Build diagrams (SVG + PNG)
+  shell: bash
+  run: |
+    set -e
+    for f in charts/*.mmd; do
+      base="$(basename "${f%.mmd}")"
+      npx @mermaid-js/mermaid-cli \
+        -p puppeteer.config.json \
+        -c mermaid.config.json \
+        -i "$f" -o "docs/svgs/${base}.svg"
+      npx @mermaid-js/mermaid-cli \
+        -p puppeteer.config.json \
+        -c mermaid.config
       - name: Create gallery index
         run: |
           echo "# Diagram Gallery" > docs/index.md
