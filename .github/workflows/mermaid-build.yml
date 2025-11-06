@@ -8,6 +8,7 @@ on:
 jobs:
   build-diagrams:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -17,7 +18,7 @@ jobs:
         with:
           node-version: 20
 
-      # Install mermaid-cli WITHOUT needing a package-lock.json
+      # Install mermaid-cli without needing a package-lock.json
       - name: Install mermaid-cli
         run: npm install --no-save @mermaid-js/mermaid-cli@^10.9.0
 
@@ -26,19 +27,17 @@ jobs:
           mkdir -p docs/svgs
           mkdir -p docs/pngs
 
-      - - name: Build diagrams (SVG + PNG)
-  shell: bash
-  run: |
-    set -e
-    for f in charts/*.mmd; do
-      base="$(basename "${f%.mmd}")"
-      npx @mermaid-js/mermaid-cli \
-        -p puppeteer.config.json \
-        -c mermaid.config.json \
-        -i "$f" -o "docs/svgs/${base}.svg"
-      npx @mermaid-js/mermaid-cli \
-        -p puppeteer.config.json \
-        -c mermaid.config
+      - name: Build diagrams (SVG + PNG)
+        run: |
+          set -euo pipefail
+          # Fail early if no charts are present
+          ls -1 charts/*.mmd >/dev/null 2>&1 || { echo "No .mmd files in charts/"; exit 1; }
+          for f in charts/*.mmd; do
+            base="$(basename "$f" .mmd)"
+            npx @mermaid-js/mermaid-cli -p puppeteer.config.json -c mermaid.config.json -i "$f" -o "docs/svgs/${base}.svg"
+            npx @mermaid-js/mermaid-cli -p puppeteer.config.json -c mermaid.config.json -i "$f" -o "docs/pngs/${base}.png"
+          done
+
       - name: Create gallery index
         run: |
           echo "# Diagram Gallery" > docs/index.md
