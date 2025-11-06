@@ -1,29 +1,41 @@
-%%{init: {
-  "theme": "dark",
-  "themeVariables": {
-    "primaryColor": "#0f172a",
-    "primaryBorderColor": "#334155",
-    "primaryTextColor": "#e5e7eb",
-    "lineColor": "#64748B",
-    "fontFamily": "Inter,Segoe UI,Helvetica,Arial,sans-serif",
-    "fontSize": "15px"
+%%{init:{
+  "theme":"dark",
+  "themeVariables":{
+    "fontFamily":"Source Sans Pro, Inter, Segoe UI, Helvetica, Arial, sans-serif",
+    "fontSize":"15px",
+    "primaryColor":"#0f172a",
+    "primaryBorderColor":"#334155",
+    "primaryTextColor":"#e5e7eb",
+    "lineColor":"#64748B"
   },
-  "flowchart": { "htmlLabels": true, "curve": "basis", "nodeSpacing": 70, "rankSpacing": 90 }
+  "flowchart":{"htmlLabels":true,"curve":"basis","nodeSpacing":70,"rankSpacing":90}
 }}%%
-flowchart LR
+flowchart TB
 
   %% Node style
   classDef node fill:#0f172a,stroke:#475569,stroke-width:1px,color:#e5e7eb,rx:6,ry:6;
-  linkStyle default stroke:#64748B,stroke-width:2px,opacity:0.7;
+  linkStyle default stroke:#64748B,stroke-width:2px,opacity:0.75;
 
-  %% Top row (Feed-forward)
-  A["<b>Coordinate</b><br/>Command Plane"]:::node --> B["<b>Sense</b><br/>Perception"]:::node
-  B --> C["<b>Hold</b><br/>Working Memory"]:::node --> D["<b>Weigh</b><br/>Social Reasoning"]:::node
+  %% Top row — Feed‑forward cognition
+  subgraph Row_1[ ]
+    direction LR
+    A["<b>Coordinate</b><br/>Command Plane"]:::node --> 
+    B["<b>Sense</b><br/>Perception"]:::node --> 
+    C["<b>Hold</b><br/>Working Memory"]:::node --> 
+    D["<b>Weigh</b><br/>Social Reasoning"]:::node
+  end
 
-  %% Bottom row (Feedback)
-  D --> E["<b>Learn</b><br/>Learning"]:::node --> F["<b>Measure</b><br/>Self-Monitor & Ledger"]:::node
-  F --> G["<b>Express</b><br/>Expression Interface"]:::node --> A
+  %% Bottom row — Feedback cognition
+  subgraph Row_2[ ]
+    direction LR
+    E["<b>Learn</b><br/>Learning"]:::node --> 
+    F["<b>Measure</b><br/>Self‑Monitor & Ledger"]:::node --> 
+    G["<b>Express</b><br/>Expression Interface"]:::node
+  end
 
-  %% Optional continuity label
-  M[( )]
-  G -.->|Continuity ⟳| A
+  %% Row connection + continuity
+  D --> E
+  %% CΔ° accent dot on continuity close
+  DOT(("")):::node
+  style DOT fill:#E60026,stroke:#E60026,color:#E60026
+  G --> DOT --> A
